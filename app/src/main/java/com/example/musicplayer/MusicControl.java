@@ -35,6 +35,8 @@ public class MusicControl {
         MusicControl.currentSongIndex = currentIndex;
 
         SongInfor song = arraySongs.get(currentSongIndex);
+        SmallSongNameControl.setTextView(song.getName(), song.getArtist());
+
         currentSong = song;
         musicPlayer = MediaPlayer.create(context, song.getResource());
         musicPlayer.start();

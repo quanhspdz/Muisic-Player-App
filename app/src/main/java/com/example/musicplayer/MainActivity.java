@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lvSongs;
     SongAdapter songAdapter;
     ArrayList<SongInfor> arraySongs;
+    View smallSongView;
     int currentSongIndex = -1;
 
     @Override
@@ -25,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //assignment
         lvSongs = findViewById(R.id.lvSongs);
+        smallSongView = findViewById(R.id.constantSongSmallDetail);
+        SmallSongNameControl.assignView(smallSongView, R.id.txtSmallName, R.id.txtSmallArtist, R.id.btnSmallPlay);
 
         addToArray();
         MusicControl.setArraySongs(arraySongs);
@@ -39,12 +44,39 @@ public class MainActivity extends AppCompatActivity {
                 MusicControl.playSongList(i, MainActivity.this, arraySongs);
                 currentSongIndex = i;
 
+                SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
+
                 SongInfor song = arraySongs.get(i);
                 Intent intent = new Intent(MainActivity.this, Music_player_activity.class);
                 intent.putExtra("currentSong", song);
                 startActivity(intent);
             }
         });
+
+        SmallSongNameControl.btnSmallPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MusicControl.musicPlayer.isPlaying()) {
+                    MusicControl.musicPlayer.pause();
+                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.play);
+                }
+                else {
+                    MusicControl.musicPlayer.start();
+                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
+                }
+            }
+        });
+
+        smallSongView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MusicControl.musicPlayer != null) {
+                    Intent intent = new Intent(MainActivity.this, Music_player_activity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
     private void addToArray() {

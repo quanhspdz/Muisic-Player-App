@@ -32,15 +32,13 @@ public class Music_player_activity extends AppCompatActivity {
 
         assignment();
 
-        Intent intent = getIntent();
-        SongInfor song = (SongInfor) intent.getSerializableExtra("currentSong");
-
-        txtSongname.setText(song.getName());
-
-        if (MusicControl.musicPlayer.isPlaying()) {
-            btnPlay.setImageResource(R.drawable.pause_new_small);
+        if (MusicControl.musicPlayer != null) {
+            SongInfor song = MusicControl.currentSong;
+            txtSongname.setText(song.getName());
+            if (MusicControl.musicPlayer.isPlaying()) btnPlay.setImageResource(R.drawable.pause_new_small);
             setSeekBarProgress(seekbarMusic);
         }
+
 
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -48,10 +46,12 @@ public class Music_player_activity extends AppCompatActivity {
             public void onClick(View view) {
                 if (MusicControl.musicPlayer.isPlaying()) {
                     btnPlay.setImageResource(R.drawable.play_new_small);
+                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.play);
                     MusicControl.musicPlayer.pause();
                 }
                 else {
                     btnPlay.setImageResource(R.drawable.pause_new_small);
+                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
                     MusicControl.musicPlayer.start();
                     setSeekBarProgress(seekbarMusic);
                 }
@@ -63,6 +63,7 @@ public class Music_player_activity extends AppCompatActivity {
             public void onClick(View view) {
                 MusicControl.playNextSong(Music_player_activity.this);
                 btnPlay.setImageResource(R.drawable.pause_new_small);
+                SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
                 txtSongname.setText(MusicControl.currentSong.getName());
                 setSeekBarProgress(seekbarMusic);
             }
@@ -73,6 +74,7 @@ public class Music_player_activity extends AppCompatActivity {
             public void onClick(View view) {
                 MusicControl.playPrevSong(Music_player_activity.this);
                 btnPlay.setImageResource(R.drawable.pause_new_small);
+                SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
                 txtSongname.setText(MusicControl.currentSong.getName());
                 setSeekBarProgress(seekbarMusic);
             }
@@ -115,13 +117,13 @@ public class Music_player_activity extends AppCompatActivity {
         videoHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (MusicControl.musicPlayer.isPlaying()) {
+                if (MusicControl.musicPlayer != null) {
                     seekbarMusic.setProgress(MusicControl.musicPlayer.getCurrentPosition());
                     if (seekbarMusic.getProgress() != seekbarMusic.getMax())
                         setSeekBarProgress(seekbarMusic);
                 }
             }
-        }, 500);
+        }, 100);
     }
 
     private void assignment() {
