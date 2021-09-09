@@ -7,8 +7,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -17,8 +20,10 @@ import java.text.SimpleDateFormat;
 
 public class Music_player_activity extends AppCompatActivity {
     ImageButton btnPlay, btnPrev, btnNext;
+    ImageView imgDisc;
     TextView txtCurrentPos, txtDuration, txtSongname;
     SeekBar seekbarMusic;
+    Animation discAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +132,10 @@ public class Music_player_activity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnPlay = findViewById(R.id.btnPlay);
         btnPrev = findViewById(R.id.btnPrev);
+
+        discAnimation = AnimationUtils.loadAnimation(Music_player_activity.this, R.anim.disc_anim);
+
+        imgDisc = findViewById(R.id.imgDisc);
 
         seekbarMusic = findViewById(R.id.seekBar);
     }
