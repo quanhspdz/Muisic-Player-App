@@ -47,6 +47,7 @@ public class MusicControl {
         musicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
+                Music_player_activity.setSeekBarProgress(Music_player_activity.seekbarMusic);
                 playSongList(nextSongIndex, context, arraySongs);
             }
         });

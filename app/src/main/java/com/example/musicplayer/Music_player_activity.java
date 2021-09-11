@@ -21,8 +21,8 @@ import java.text.SimpleDateFormat;
 public class Music_player_activity extends AppCompatActivity {
     ImageButton btnPlay, btnPrev, btnNext;
     ImageView imgDisc;
-    TextView txtCurrentPos, txtDuration, txtSongname;
-    SeekBar seekbarMusic;
+    TextView txtCurrentPos, txtDuration, txtSongname, txtArtist;
+    public static SeekBar seekbarMusic;
     Animation discAnimation;
 
     @Override
@@ -33,8 +33,7 @@ public class Music_player_activity extends AppCompatActivity {
         assignment();
 
         if (MusicControl.musicPlayer != null) {
-            SongInfor song = MusicControl.currentSong;
-            txtSongname.setText(song.getName());
+            setSongText();
             if (MusicControl.musicPlayer.isPlaying()) btnPlay.setImageResource(R.drawable.pause_new_small);
             setSeekBarProgress(seekbarMusic);
         }
@@ -64,7 +63,7 @@ public class Music_player_activity extends AppCompatActivity {
                 MusicControl.playNextSong(Music_player_activity.this);
                 btnPlay.setImageResource(R.drawable.pause_new_small);
                 SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
-                txtSongname.setText(MusicControl.currentSong.getName());
+                setSongText();
                 setSeekBarProgress(seekbarMusic);
             }
         });
@@ -75,7 +74,7 @@ public class Music_player_activity extends AppCompatActivity {
                 MusicControl.playPrevSong(Music_player_activity.this);
                 btnPlay.setImageResource(R.drawable.pause_new_small);
                 SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
-                txtSongname.setText(MusicControl.currentSong.getName());
+                setSongText();
                 setSeekBarProgress(seekbarMusic);
             }
         });
@@ -90,12 +89,7 @@ public class Music_player_activity extends AppCompatActivity {
                 String strTime = timeFormat.format(time);
                 txtCurrentPos.setText(strTime);
                 txtDuration.setText(timeFormat.format(MusicControl.musicPlayer.getDuration()));
-                txtSongname.setText(MusicControl.arraySongs.get(MusicControl.currentSongIndex).getName());
-
-                if (seekBar.getProgress() == seekBar.getMax()) {
-                    setSeekBarProgress(seekbarMusic);
-                }
-
+                setSongText();
             }
 
             @Override
@@ -111,7 +105,7 @@ public class Music_player_activity extends AppCompatActivity {
 
     }
 
-    private void setSeekBarProgress(SeekBar seekbarMusic) {
+    public static void setSeekBarProgress(SeekBar seekbarMusic) {
         seekbarMusic.setMax(MusicControl.musicPlayer.getDuration());
         Handler videoHandler = new Handler();
         videoHandler.postDelayed(new Runnable() {
@@ -126,10 +120,17 @@ public class Music_player_activity extends AppCompatActivity {
         }, 100);
     }
 
+    private void setSongText() {
+        SongInfor song = MusicControl.currentSong;
+        txtSongname.setText(song.getName());
+        txtArtist.setText(song.getArtist());
+    }
+
     private void assignment() {
         txtSongname = findViewById(R.id.txtSongName);
         txtDuration = findViewById(R.id.txtDuration);
         txtCurrentPos = findViewById(R.id.txtCurrentPos);
+        txtArtist = findViewById(R.id.txtFullArtist);
 
         btnNext = findViewById(R.id.btnNext);
         btnPlay = findViewById(R.id.btnPlay);

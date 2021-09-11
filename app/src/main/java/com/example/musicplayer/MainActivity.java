@@ -56,13 +56,15 @@ public class MainActivity extends AppCompatActivity {
         SmallSongNameControl.btnSmallPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MusicControl.musicPlayer.isPlaying()) {
-                    MusicControl.musicPlayer.pause();
-                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.play);
-                }
-                else {
-                    MusicControl.musicPlayer.start();
-                    SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
+                if (MusicControl.musicPlayer != null) {
+                    if (MusicControl.musicPlayer.isPlaying()) {
+                        MusicControl.musicPlayer.pause();
+                        SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.play);
+                    }
+                    else {
+                        MusicControl.musicPlayer.start();
+                        SmallSongNameControl.btnSmallPlay.setImageResource(R.drawable.pause);
+                    }
                 }
             }
         });

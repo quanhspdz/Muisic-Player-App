@@ -26,7 +26,7 @@
         android:gravity="start"
         android:text="Song's name"
         android:textColor="#62625F"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

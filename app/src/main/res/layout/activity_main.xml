@@ -14,83 +14,103 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="65dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="67dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constantSongSmallDetail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
+        android:id="@+id/constrainLayoutOutLine"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:background="#FB1403"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvSongs">
+        app:layout_constraintTop_toBottomOf="@+id/lvSongs"
+        app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/imgSmallSong"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="10dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constantSongSmallDetail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/music_icon" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtSmallName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginBottom="20dp"
-            android:text="Mùa hè không nóng"
-            android:textColor="#62625F"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgSmallSong"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4" />
+            <ImageView
+                android:id="@+id/imgSmallSong"
+                android:layout_width="63dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/music_icon" />
 
-        <TextView
-            android:id="@+id/txtSmallArtist"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="130dp"
-            android:text="Quang Anh"
-            android:textColor="#606060"
-            android:textSize="14sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgSmallSong"
-            app:layout_constraintTop_toBottomOf="@+id/txtSmallName"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/txtSmallName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="130dp"
+                android:layout_marginBottom="20dp"
+                android:text="Mùa hè không nóng"
+                android:textColor="#62625F"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgSmallSong"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
 
-        <ImageView
-            android:id="@+id/btnSmallPlay"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.924"
-            app:layout_constraintStart_toEndOf="@+id/txtSmallName"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.36"
-            app:srcCompat="@drawable/play" />
+            <TextView
+                android:id="@+id/txtSmallArtist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="130dp"
+                android:text="Quang Anh"
+                android:textColor="#606060"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgSmallSong"
+                app:layout_constraintTop_toBottomOf="@+id/txtSmallName"
+                app:layout_constraintVertical_bias="0.0" />
 
+            <ImageView
+                android:id="@+id/btnSmallPlay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.924"
+                app:layout_constraintStart_toEndOf="@+id/txtSmallName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.36"
+                app:srcCompat="@drawable/play" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
